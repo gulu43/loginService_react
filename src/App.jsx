@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import { LoginUser } from './loginUser.jsx'
-import { SignupUser } from './signupUser.jsx'
+import { LoginUser } from './LoginUser.jsx'
+import { SignupUser } from './SignupUser.jsx'
 
 function App() {
   const [isLogin, setIsLogin] = useState(true)
