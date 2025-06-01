@@ -10,7 +10,6 @@ export function SignupUser() {
   });
 
   let [message, setMessage] = useState("");
-  let [isSuccess, setIsSuccess] = useState(null); // ✅ new state
 
   let sendDataForRegisterFn = async () => {
     try {
@@ -25,15 +24,12 @@ export function SignupUser() {
       const result = await response.json();
 
       if (response.ok) {
-        setIsSuccess(true); // ✅ mark as success
         setMessage(result.message || "Registered successfully!");
       } else {
-        setIsSuccess(false); // ✅ mark as failure
         setMessage(result.message || "Registration failed!");
       }
     } catch (error) {
       console.log("Error while sending data", error?.message);
-      setIsSuccess(false); // ✅ mark as failure
       setMessage("Network error or server not responding.");
     }
   };
@@ -77,12 +73,7 @@ export function SignupUser() {
           <button className='SignupBtn' onClick={sendDataForRegisterFn}>Create</button>
         </div>
 
-       
-        {message && (
-          <p style={{ marginTop: "10px", color: isSuccess ? "green" : "red" }}>
-            {message}
-          </p>
-        )}
+       {message && <p style={{ marginTop: "10px", color: "whitesmoke" }}>{message}</p>}
       </div>
     </>
   );
