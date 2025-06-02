@@ -12,6 +12,8 @@ export function SignupUser() {
   let [message, setMessage] = useState("");
 
   let sendDataForRegisterFn = async () => {
+    console.log("is null? ",data);
+    
     try {
       const response = await fetch(`http://localhost:${PORT}/user/signup`, {
         method: "POST",
@@ -22,7 +24,8 @@ export function SignupUser() {
       });
 
       const result = await response.json();
-
+      console.log("response from server ",result);
+      
       if (response.ok) {
         setMessage(result.message || "Registered successfully!");
       } else {
