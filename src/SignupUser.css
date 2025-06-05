@@ -65,3 +65,24 @@
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
+
+/* ------ for choose file------- */
+
+.Inp[type="file"] {
+  color: whitesmoke;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.Inp[type="file"]::file-selector-button {
+  background-color: rgba(255, 255, 255, 0.1);
+  /* background-color: transparent;  */
+  color: whitesmoke;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px); 
+}
+

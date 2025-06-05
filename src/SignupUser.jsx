@@ -6,7 +6,8 @@ export function SignupUser() {
   let [data, setData] = useState({
     email: "",
     fullName: "",
-    password: ""
+    password: "",
+    profilePhoto: ""
   });
 
   let [message, setMessage] = useState("");
@@ -15,12 +16,23 @@ export function SignupUser() {
     console.log("is null? ",data);
     
     try {
+      const formData = new FormData();
+      formData.append("email", data.email);
+      formData.append("fullName", data.fullName);
+      if (data.password == "") {
+        console.error("password is required");
+        // return { message: "password is required"}
+      }
+      formData.append("password", data.password);
+      formData.append("profilePhoto", data.profilePhoto); 
+
       const response = await fetch(`http://localhost:${PORT}/user/signup`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data)
+        body: formData,
+        // headers: {
+        //   "Content-Type": "application/json",
+        // },
+        // body: JSON.stringify(data) 
       });
 
       const result = await response.json();
@@ -29,7 +41,7 @@ export function SignupUser() {
       if (response.ok) {
         setMessage(result.message || "Registered successfully!");
       } else {
-        setMessage(result.message || "Registration failed!");
+        setMessage(result?.error?.message || result?.message || "Registration failed!");
       }
     } catch (error) {
       console.log("Error while sending data", error?.message);
@@ -64,10 +76,19 @@ export function SignupUser() {
 
         <div className='ContainerForLableAndInput'>
           <label htmlFor='passwordInpId' className='Label'>Password: </label>
-          <input type="password" id="passwordInpId" className='Inp' onChange={(e) => {
+          <input type="password" id="passwordInpId" className='Inp' required onChange={(e) => {
             setData((prev) => ({
               ...prev,
               password: e.target.value
+            }))
+          }} />
+        </div>
+        <div className='ContainerForLableAndInput'>
+          <label htmlFor='avatarPhotoInpId' className='Label'>Profile Photo: </label>
+          <input type="file" name="profilePhoto" id="avatarPhotoInpId" className='Inp' onChange={(e) => {
+            setData((prev) => ({
+              ...prev,
+              profilePhoto: e.target.files[0]
             }))
           }} />
         </div>
