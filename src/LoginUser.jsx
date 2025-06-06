@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import './LoginUser.css'
 
 export function LoginUser() {
-  const PORT = import.meta.env.VITE_PORT || 8000;
+  // const PORT = import.meta.env.VITE_PORT || 8000;
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
   let [data, setData] = useState({
     email: "",
@@ -12,7 +13,7 @@ export function LoginUser() {
   let [message, setMessage] = useState("");
 
   let sendDataForLoginFn = async () => {
-    const response = await fetch(`http://localhost:${PORT}/user/login`, {
+    const response = await fetch(`${BACKEND_URL}/user/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

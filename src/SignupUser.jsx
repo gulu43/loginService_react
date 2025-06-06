@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react';
 import './SignupUser.css'
 
 export function SignupUser() {
-  const PORT = import.meta.env.VITE_PORT || 8000;
+  // const PORT = import.meta.env.VITE_PORT || 8000;
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+  
   let [data, setData] = useState({
     email: "",
     fullName: "",
@@ -26,7 +28,7 @@ export function SignupUser() {
       formData.append("password", data.password);
       formData.append("profilePhoto", data.profilePhoto); 
 
-      const response = await fetch(`http://localhost:${PORT}/user/signup`, {
+      const response = await fetch(`${BACKEND_URL}/user/signup`, {
         method: "POST",
         body: formData,
         // headers: {
