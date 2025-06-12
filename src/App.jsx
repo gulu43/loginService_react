@@ -7,7 +7,7 @@ import './App.css';
 export default function App() {
   const navigate = useNavigate();       // allows URL changes (like navigate("/login"))
   const location = useLocation();       // tells us current path (like "/login" or "/register")
-
+4
   const isLogin = location.pathname === "/user/login"; // boolean for checked state
 
   return (
@@ -29,45 +29,12 @@ export default function App() {
         <Routes>
           <Route path="/user/login" element={<LoginUser />} />
           <Route path="/user/register" element={<SignupUser />} />
+          {/* <Route path="/user/udata" element={<LoginUser />} /> */}
           <Route path="/user/auth/refresh" element={< RefreshUser />} />
           <Route path="/" element={<Navigate to="/user/login" />} /> {/* redirect root to login */}
-          <Route path="*" element={<Navigate to="/user/login" />} /> {/* for unknown paths */}
+          <Route path="*" element={<Navigate to="/user/login" />} /> 
         </Routes>
       </div>
     </div>
   );
 }
-
-// import { LoginUser } from './LoginUser.jsx'
-// import { SignupUser } from './SignupUser.jsx'
-// import { useState, useEffect } from 'react'
-// import { Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
-// import './App.css'
-
-// function App() {
-//   const [isLogin, setIsLogin] = useState(true)
-//   return (
-//     <>
-//       <div className='RadioAndPageContainer'>
-
-//         <div className='RadioCounter'>
-//           <input type="radio" name="LoginService" id="loginRadioId" className='loginRadio' onClick={() => setIsLogin(true)} defaultChecked />
-//           <label htmlFor="loginRadioId">Login</label>
-
-//           <input type="radio" name="LoginService" id="registerRadioId" className='registerRadio' onClick={() => setIsLogin(false)} />
-//           <label htmlFor="registerRadioId">Register</label>
-//         </div>
-
-//         <div className='pageContainer'>
-//           {(isLogin === true) ? <LoginUser /> : <SignupUser />}
-//         </div>
-
-//       </div>
-//     </>
-//   )
-// }
-
-// export default App
-
-// {/* <Link to="/user/login" className='link_text'></Link>
-// <Link to="/user/register" className='link_text'></Link> */}
