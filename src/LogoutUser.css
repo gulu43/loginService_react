@@ -1,0 +1,11 @@
+.logoutBtn{
+    background-color: #E0E0E0;
+    color: #1A1A1A;
+    border: 1px solid #1A1A1A;  /* Fixed: added # for hex color */
+    border-radius: 30px;
+    font-size: 20px;
+    padding: 10px 25px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
