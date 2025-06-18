@@ -15,6 +15,7 @@ export function LoginUser() {
   let [message, setMessage] = useState("");
 
   let sendDataForLoginFn = async () => {
+    console.log("BACKEND_URL: for check: ", BACKEND_URL);
     const response = await fetch(`${BACKEND_URL}/user/login`, {
       method: "POST",
       headers: {
