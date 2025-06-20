@@ -5,6 +5,7 @@ import { SignupUser } from './SignupUser.jsx';
 import { RefreshUser } from './RefreshUser.jsx';
 import { LogoutUser } from './LogoutUser.jsx';
 import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
   const navigate = useNavigate();       // allows URL changes (like navigate("/login"))
@@ -37,7 +38,7 @@ export default function App() {
           <Route path="/" element={<Navigate to="/user/login" />} /> {/* redirect root to login */}
           <Route path="*" element={<Navigate to="/user/login" />} /> 
         </Routes>
-        <ToastContainer position="top-center" autoClose={4000} theme='dark' />
+        <ToastContainer position="top-center" autoClose={5000} theme='dark' />
       </div>
     </div>
   );

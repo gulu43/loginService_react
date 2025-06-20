@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Router, Route, useNavigate, Outlet } from 'react-router-dom';
 import { RefreshUser } from './RefreshUser.jsx';
 import './LoginUser.css'
+import { toast } from 'react-toastify';
 
 export function LoginUser() {
   // const PORT = import.meta.env.VITE_PORT || 8000;
@@ -28,8 +29,10 @@ export function LoginUser() {
 
     if (response.ok) {
       setMessage(result.message || "Login successful!");
+      toast.success(result.message || "Login successful!");
     } else {
       setMessage(result.message || "Login failed!");
+      toast.error(result.message || "Login failed!");
     }
 
   }
@@ -47,12 +50,15 @@ export function LoginUser() {
 
     if (response.ok) {
       setMessage(result.message || "Auto-login successful!");
+      toast.success(result.message || "Auto-login successful!");
       navigate("/user/udata"); 
     } else {
       setMessage(result.message || "Session expired. Please log in.");
+      toast.info(result.message || "Session expired. Please log in.");
     }
   } catch (err) {
     setMessage("Network error or backend not available.");
+    toast.error("Network error or backend not available.");
   }
 };
 
