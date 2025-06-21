@@ -4,7 +4,7 @@ import './LogoutUser.css'
 import { toast } from 'react-toastify';
 export function LogoutUser() {
 
-    const [message, setMessage] = useState('');
+    // const [message, setMessage] = useState('');
     const navigate = useNavigate();
     const BACKENDURL = import.meta.env.VITE_BACKEND_URL;
 
@@ -23,7 +23,7 @@ export function LogoutUser() {
 
             if (result.ok) {
                 // setMessage(result.message || "Logout successfully!")
-                toast.error(result.message || "Logout successfully!");
+                toast.success(result.message || "Logout successfully!");
                 navigate("/user/login");
 
             } else {

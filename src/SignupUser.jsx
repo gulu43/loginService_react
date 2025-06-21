@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import './SignupUser.css'
 
 export function SignupUser() {
@@ -12,7 +13,7 @@ export function SignupUser() {
     profilePhoto: ""
   });
 
-  let [message, setMessage] = useState("");
+  // let [message, setMessage] = useState("");
 
   let sendDataForRegisterFn = async () => {
     console.log("is null? ",data);
@@ -23,6 +24,7 @@ export function SignupUser() {
       formData.append("fullName", data.fullName);
       if (data.password == "") {
         console.error("password is required");
+        toast.error("password is required");
         // return { message: "password is required"}
       }
       formData.append("password", data.password);
@@ -41,13 +43,17 @@ export function SignupUser() {
       console.log("response from server ",result);
       
       if (response.ok) {
-        setMessage(result.message || "Registered successfully!");
+        // setMessage(result.message || "Registered successfully!");
+        toast.success(result.message || "Registered successfully!");
       } else {
-        setMessage(result?.error?.message || result?.message || "Registration failed!");
+        // setMessage(result?.error?.message || result?.message || "Registration failed!");
+        toast.error(result?.error?.message || result?.message || "Registration failed!");
       }
     } catch (error) {
       console.log("Error while sending data", error?.message);
-      setMessage("Network error or server not responding.");
+      toast.error("Error while sending data", error?.message);
+      // setMessage("Network error or server not responding.");
+      toast.warning("Network error or server not responding.");
     }
   };
 
@@ -99,7 +105,9 @@ export function SignupUser() {
           <button className='SignupBtn' onClick={sendDataForRegisterFn}>Create</button>
         </div>
 
-       {message && <p style={{ marginTop: "10px", color: "whitesmoke" }}>{message}</p>}
+       {/*
+       message && <p style={{ marginTop: "10px", color: "whitesmoke" }}>{message}</p>
+       */}
       </div>
     </>
   );

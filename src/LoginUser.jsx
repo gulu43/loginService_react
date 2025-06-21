@@ -13,7 +13,7 @@ export function LoginUser() {
     password: ""
   });
 
-  let [message, setMessage] = useState("");
+  // let [message, setMessage] = useState("");
 
   let sendDataForLoginFn = async () => {
     console.log("BACKEND_URL: for check: ", BACKEND_URL);
@@ -28,10 +28,10 @@ export function LoginUser() {
     const result = await response.json();
 
     if (response.ok) {
-      setMessage(result.message || "Login successful!");
+      // setMessage(result.message || "Login successful!");
       toast.success(result.message || "Login successful!");
     } else {
-      setMessage(result.message || "Login failed!");
+      // setMessage(result.message || "Login failed!");
       toast.error(result.message || "Login failed!");
     }
 
@@ -49,15 +49,15 @@ export function LoginUser() {
     const result = await response.json();
 
     if (response.ok) {
-      setMessage(result.message || "Auto-login successful!");
+      // setMessage(result.message || "Auto-login successful!");
       toast.success(result.message || "Auto-login successful!");
       navigate("/user/udata"); 
     } else {
-      setMessage(result.message || "Session expired. Please log in.");
+      // setMessage(result.message || "Session expired. Please log in.");
       toast.info(result.message || "Session expired. Please log in.");
     }
   } catch (err) {
-    setMessage("Network error or backend not available.");
+    // setMessage("Network error or backend not available.");
     toast.error("Network error or backend not available.");
   }
 };
@@ -97,7 +97,9 @@ export function LoginUser() {
           <button className='loginBtn' onClick={loginWithJWTFn}>Log-in with JWT</button>
         </div>
 
-        {message && <p style={{ marginTop: "10px", color: "whitesmoke" }}>{message}</p>}
+        {/*
+        message && <p style={{ marginTop: "10px", color: "whitesmoke" }}>{message}</p>
+        */}
         
       </div>
     
