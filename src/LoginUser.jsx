@@ -5,6 +5,7 @@ import './LoginUser.css'
 import { toast } from 'react-toastify';
 
 export function LoginUser() {
+
   // const PORT = import.meta.env.VITE_PORT || 8000;
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -30,6 +31,7 @@ export function LoginUser() {
     if (response.ok) {
       // setMessage(result.message || "Login successful!");
       toast.success(result.message || "Login successful!");
+      navigate('/user/home');
     } else {
       // setMessage(result.message || "Login failed!");
       toast.error(result.message || "Login failed!");
@@ -51,7 +53,7 @@ export function LoginUser() {
     if (response.ok) {
       // setMessage(result.message || "Auto-login successful!");
       toast.success(result.message || "Auto-login successful!");
-      navigate("/user/udata"); 
+      navigate("/user/home"); 
     } else {
       // setMessage(result.message || "Session expired. Please log in.");
       toast.info(result.message || "Session expired. Please log in.");
